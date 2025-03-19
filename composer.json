@@ -1,0 +1,80 @@
+{
+    "name": "rrustam/last-modified",
+    "description": "Set Last-Modified header and 304 response code",
+    "license": "MIT",
+    "keywords": [
+        "304 Not Modified",
+        "Last-Modified",
+        "If-Modified-Since",
+        "Laravel Last-Modified",
+        "Laravel 304"
+    ],
+
+    "authors": [
+        {
+            "name": "rrustam",
+            "email": "uck123@mail.ru"
+        }
+    ],
+
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "nunomaduro/collision": "^8.0",
+        "nunomaduro/larastan": "^2.0",
+        "orchestra/testbench": " ^9.0",
+        "phpunit/phpunit": "^10.0"
+    },
+
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+
+
+
+    "autoload": {
+        "psr-4": {
+            "Rrustam\\LastModified\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rrustam\\LastModified\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "LastModified": "Rrustam\\LastModified\\Facades\\LastModified"
+            },
+            "providers": [
+                "Rrustam\\LastModified\\LastModifiedServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "phpcsf": "vendor/bin/php-cs-fixer fix --diff",
+        "phpstan:generate-baseline": "vendor/bin/phpstan --generate-baseline",
+        "test:all": [
+            "@test:phpcsf",
+            "@test:phpstan",
+            "@test:phpunit"
+        ],
+        "test:phpcsf": "vendor/bin/php-cs-fixer fix --dry-run",
+        "test:phpstan": "vendor/bin/phpstan analyse",
+        "test:phpunit": "vendor/bin/phpunit --colors=always"
+    },
+    "scripts-descriptions": {
+        "phpcsf": "Run PHP-CS-Fixer fix",
+        "phpstan:generate-baseline": "Generate baseline for PHPStan",
+        "test:all": "Run all code analysis and tests",
+        "test:phpcsf": "Run PHP-CS-Fixer test",
+        "test:phpstan": "Run PHPStan",
+        "test:phpunit": "Run PHPUnit"
+    }
+}
